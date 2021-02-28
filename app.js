@@ -9,6 +9,8 @@ import fileUpload from "express-fileupload";
 import dotenv from "dotenv";
 
 const __dirname = "./";
+
+var ToDo = require('./routes/api/ToDo');
 var app = express();
 dotenv.config();
 // view engine setup
@@ -28,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use('/api/', ToDo);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
